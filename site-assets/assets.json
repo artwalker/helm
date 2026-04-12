@@ -1,0 +1,21 @@
+{
+  "screenshots": [
+    "home-idle-zh.png",
+    "home-idle-en.png",
+    "approval-dialog.png",
+    "ask-user-question.png",
+    "minibar-idle.png",
+    "minibar-expanded.png",
+    "settings.png",
+    "multi-agent-queue.png"
+  ],
+  "gifs": [
+    "minibar-flow.gif"
+  ],
+  "mascots": [
+    "sticker-sheet.png",
+    "pilot-idle.png",
+    "spark-idle.png",
+    "prism-idle.png"
+  ]
+}

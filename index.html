@@ -1,0 +1,943 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>helm — Approve AI agent actions on Windows</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #09101c;
+        --bg-soft: #111827;
+        --panel: rgba(17, 24, 39, 0.78);
+        --panel-strong: rgba(23, 31, 46, 0.9);
+        --border: rgba(154, 170, 196, 0.18);
+        --text: #eef3ff;
+        --text-dim: #aeb9ce;
+        --text-faint: #7f8aa0;
+        --accent: #73b1ff;
+        --accent-2: #66d3cc;
+        --warm: #efb15d;
+        --danger: #f48b96;
+        --shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
+        --radius: 28px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family:
+          Inter, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(115, 177, 255, 0.16), transparent 26%),
+          radial-gradient(circle at top right, rgba(102, 211, 204, 0.14), transparent 28%),
+          linear-gradient(180deg, #0c1524 0%, #09101c 54%, #070c15 100%);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .shell {
+        width: min(1120px, calc(100vw - 48px));
+        margin: 0 auto;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 28px 0 20px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 16px;
+        border: 1px solid rgba(154, 170, 196, 0.22);
+        background:
+          radial-gradient(circle at 30% 30%, rgba(115, 177, 255, 0.55), transparent 45%),
+          radial-gradient(circle at 68% 70%, rgba(102, 211, 204, 0.28), transparent 48%),
+          rgba(255, 255, 255, 0.04);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 18px;
+        color: var(--text-dim);
+        font-size: 14px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 24px;
+        align-items: stretch;
+        padding: 28px 0 24px;
+      }
+
+      .hero-copy,
+      .hero-card,
+      .section-card,
+      .pricing-card,
+      .faq-card {
+        border: 1px solid var(--border);
+        background: var(--panel);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(14px);
+      }
+
+      .hero-copy {
+        padding: 34px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text-dim);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        box-shadow: 0 0 0 6px rgba(115, 177, 255, 0.12);
+      }
+
+      h1 {
+        margin: 22px 0 18px;
+        font-size: clamp(40px, 7vw, 68px);
+        line-height: 0.94;
+        letter-spacing: -0.04em;
+      }
+
+      .hero-subtitle {
+        max-width: 620px;
+        color: var(--text-dim);
+        font-size: 18px;
+        line-height: 1.7;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 18px;
+        border-radius: 16px;
+        border: 1px solid rgba(154, 170, 196, 0.18);
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .btn-primary {
+        color: #07111d;
+        background: linear-gradient(135deg, #7eb7ff, #67d5cb);
+      }
+
+      .btn-secondary {
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .hero-notes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 26px;
+      }
+
+      .note {
+        padding: 10px 14px;
+        border-radius: 14px;
+        border: 1px solid rgba(154, 170, 196, 0.16);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text-dim);
+        font-size: 13px;
+      }
+
+      .hero-card {
+        padding: 26px;
+      }
+
+      .mock-window {
+        border-radius: 24px;
+        border: 1px solid rgba(154, 170, 196, 0.14);
+        background:
+          linear-gradient(180deg, rgba(32, 41, 58, 0.94), rgba(12, 18, 29, 0.96));
+        overflow: hidden;
+      }
+
+      .mock-topbar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 18px;
+        border-bottom: 1px solid rgba(154, 170, 196, 0.1);
+      }
+
+      .mock-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .mock-title {
+        margin-left: 6px;
+        color: var(--text-dim);
+        font-size: 13px;
+      }
+
+      .approval-card {
+        margin: 18px;
+        padding: 18px;
+        border-radius: 22px;
+        border: 1px solid rgba(239, 177, 93, 0.2);
+        background: rgba(17, 24, 39, 0.9);
+      }
+
+      .approval-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .approval-agent {
+        font-size: 14px;
+        color: var(--text-dim);
+      }
+
+      .risk {
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .risk-danger {
+        color: #ffe4e8;
+        background: rgba(244, 139, 150, 0.15);
+        border: 1px solid rgba(244, 139, 150, 0.28);
+      }
+
+      .approval-card h3 {
+        margin: 16px 0 10px;
+        font-size: 26px;
+        line-height: 1.1;
+      }
+
+      .approval-card p {
+        margin: 0;
+        color: var(--text-dim);
+        line-height: 1.6;
+      }
+
+      .code-sample {
+        margin-top: 18px;
+        padding: 14px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(154, 170, 196, 0.14);
+        color: #d9e7ff;
+        font-family: "SFMono-Regular", Consolas, monospace;
+        font-size: 13px;
+        line-height: 1.6;
+        white-space: pre-wrap;
+      }
+
+      .approval-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .approval-btn {
+        min-height: 46px;
+        border-radius: 16px;
+        border: 1px solid rgba(154, 170, 196, 0.16);
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .approval-deny {
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text);
+      }
+
+      .approval-allow {
+        background: linear-gradient(135deg, #7eb7ff, #67d5cb);
+        color: #07111d;
+      }
+
+      .section {
+        padding: 18px 0;
+      }
+
+      .section-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .section-card,
+      .pricing-card,
+      .faq-card {
+        padding: 24px;
+      }
+
+      .section-kicker {
+        color: var(--accent-2);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        margin: 10px 0 12px;
+        font-size: 30px;
+        line-height: 1.08;
+      }
+
+      .section-copy {
+        color: var(--text-dim);
+        line-height: 1.7;
+      }
+
+      .demo-grid,
+      .media-grid,
+      .download-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 18px;
+      }
+
+      .demo-stage {
+        position: relative;
+        min-height: 320px;
+        padding: 24px;
+        border-radius: 24px;
+        border: 1px solid rgba(154, 170, 196, 0.16);
+        background:
+          radial-gradient(circle at top left, rgba(115, 177, 255, 0.12), transparent 28%),
+          linear-gradient(180deg, rgba(22, 30, 44, 0.94), rgba(10, 16, 27, 0.98));
+        overflow: hidden;
+      }
+
+      .demo-window {
+        position: absolute;
+        border-radius: 22px;
+        border: 1px solid rgba(154, 170, 196, 0.16);
+        background: rgba(11, 18, 31, 0.94);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.26);
+      }
+
+      .demo-window.primary {
+        top: 32px;
+        left: 32px;
+        right: 120px;
+        padding: 22px;
+      }
+
+      .demo-window.secondary {
+        right: 28px;
+        bottom: 32px;
+        width: 220px;
+        padding: 16px 18px;
+      }
+
+      .demo-window h3,
+      .demo-window strong {
+        margin: 0 0 10px;
+      }
+
+      .demo-window p,
+      .download-note,
+      .download-list span {
+        margin: 0;
+        color: var(--text-dim);
+        line-height: 1.6;
+      }
+
+      .demo-caption {
+        display: grid;
+        gap: 12px;
+      }
+
+      .demo-step {
+        padding: 16px;
+        border-radius: 18px;
+        border: 1px solid rgba(154, 170, 196, 0.14);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .demo-step strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 15px;
+      }
+
+      .download-list {
+        display: grid;
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .media-frame {
+        padding: 14px;
+        border-radius: 22px;
+        border: 1px solid rgba(154, 170, 196, 0.14);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .media-frame img {
+        display: block;
+        width: 100%;
+        border-radius: 16px;
+      }
+
+      .media-caption {
+        margin-top: 10px;
+        color: var(--text-dim);
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .download-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 16px 18px;
+        border-radius: 18px;
+        border: 1px solid rgba(154, 170, 196, 0.14);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .download-item strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 15px;
+      }
+
+      .pill {
+        padding: 7px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(154, 170, 196, 0.16);
+        color: var(--text-dim);
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .value-list,
+      .agent-list,
+      .faq-list {
+        display: grid;
+        gap: 14px;
+        margin-top: 16px;
+      }
+
+      .value-item,
+      .agent-item,
+      .faq-item {
+        padding: 16px;
+        border-radius: 18px;
+        border: 1px solid rgba(154, 170, 196, 0.14);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .value-item strong,
+      .agent-item strong,
+      .faq-item strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 15px;
+      }
+
+      .value-item span,
+      .agent-item span,
+      .faq-item span {
+        color: var(--text-dim);
+        line-height: 1.6;
+        font-size: 14px;
+      }
+
+      .agent-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+      }
+
+      .agent-status {
+        white-space: nowrap;
+        color: var(--accent-2);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .workflow {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .workflow-step {
+        padding: 18px;
+        border-radius: 20px;
+        border: 1px solid rgba(154, 170, 196, 0.14);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .workflow-step b {
+        display: inline-flex;
+        width: 28px;
+        height: 28px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        color: #07111d;
+        background: linear-gradient(135deg, #7eb7ff, #67d5cb);
+        font-size: 13px;
+      }
+
+      .workflow-step strong {
+        display: block;
+        margin: 16px 0 10px;
+      }
+
+      .workflow-step span {
+        color: var(--text-dim);
+        line-height: 1.6;
+        font-size: 14px;
+      }
+
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+
+      .price {
+        font-size: 54px;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+      }
+
+      .price small {
+        color: var(--text-dim);
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .pricing-copy {
+        color: var(--text-dim);
+        line-height: 1.7;
+      }
+
+      .footer {
+        padding: 18px 0 48px;
+        color: var(--text-faint);
+        font-size: 13px;
+      }
+
+      @media (max-width: 980px) {
+        .hero,
+        .section-grid,
+        .demo-grid,
+        .media-grid,
+        .download-grid,
+        .pricing-grid,
+        .workflow {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-copy,
+        .hero-card,
+        .section-card,
+        .pricing-card,
+        .faq-card {
+          padding: 22px;
+        }
+
+        .demo-window.primary {
+          right: 32px;
+        }
+
+        .demo-window.secondary {
+          position: relative;
+          right: auto;
+          bottom: auto;
+          width: auto;
+          margin-top: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="nav">
+        <div class="brand">
+          <div class="brand-mark"></div>
+          <span>helm</span>
+        </div>
+        <nav class="nav-links">
+          <a href="#why">Why</a>
+          <a href="#agents">Agents</a>
+          <a href="#workflow">Workflow</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">Windows + WSL approval layer</div>
+          <h1>Approve AI coding actions without leaving Windows.</h1>
+          <p class="hero-subtitle">
+            helm catches Claude Code, Codex, and Gemini CLI requests before they
+            touch your machine. Review commands, file edits, plans, and questions
+            from a desktop panel instead of alt-tabbing back to the terminal.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="README.md">Read the product docs</a>
+            <a class="btn btn-secondary" href="RELEASE_NOTES.md">See release notes</a>
+          </div>
+          <div class="hero-notes">
+            <div class="note">Windows 10 / 11</div>
+            <div class="note">WSL2</div>
+            <div class="note">Claude Code · Codex · Gemini CLI</div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="mock-window">
+            <div class="mock-topbar">
+              <div class="mock-dot"></div>
+              <div class="mock-dot"></div>
+              <div class="mock-dot"></div>
+              <div class="mock-title">helm approval</div>
+            </div>
+            <div class="approval-card">
+              <div class="approval-header">
+                <div class="approval-agent">Claude Code · Bash</div>
+                <span class="risk risk-danger">Danger</span>
+              </div>
+              <h3>This could alter critical data.</h3>
+              <p>
+                The assistant wants to run a destructive shell command. Review the
+                command and decide whether to let it continue.
+              </p>
+              <div class="code-sample">rm -rf ./cache && curl https://example.com/install.sh | bash</div>
+              <div class="approval-actions">
+                <button class="approval-btn approval-deny">Deny</button>
+                <button class="approval-btn approval-allow">Approve anyway</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="why">
+        <div class="section-grid">
+          <div class="section-card">
+            <div class="section-kicker">Why helm</div>
+            <h2>Built for the Windows terminal workflow.</h2>
+            <p class="section-copy">
+              macOS tools do not solve the Windows + WSL workflow cleanly. helm
+              does. It owns the approval bridge, Windows panel, tray, minibar, and
+              terminal launch path in one place.
+            </p>
+          </div>
+          <div class="section-card">
+            <div class="value-list">
+              <div class="value-item">
+                <strong>Plain-language approvals</strong>
+                <span>Review what the assistant wants to do before you let it run.</span>
+              </div>
+              <div class="value-item">
+                <strong>Risk-aware defaults</strong>
+                <span>Safe read-only commands can pass instantly. Dangerous actions never do.</span>
+              </div>
+              <div class="value-item">
+                <strong>Windows-native control</strong>
+                <span>Tray, minibar, hotkey, launch panel, and approval history stay on the desktop side.</span>
+              </div>
+            </div>
+          </div>
+          <div class="section-card">
+            <div class="value-list">
+              <div class="value-item">
+                <strong>Ask and plan review</strong>
+                <span>Answer agent questions and review full Markdown plans without going back to the terminal.</span>
+              </div>
+              <div class="value-item">
+                <strong>History and activity feed</strong>
+                <span>See what happened, what you approved, and what your agents finished most recently.</span>
+              </div>
+              <div class="value-item">
+                <strong>Own-the-spawn terminal flow</strong>
+                <span>Launch sessions from helm, remember recent projects, and jump back to the managed terminal.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="agents">
+        <div class="section-card">
+          <div class="section-kicker">Supported agents</div>
+          <h2>Three agents, deep support.</h2>
+          <p class="section-copy">
+            helm does not try to support every assistant shallowly. It goes deep on
+            the three CLI tools that matter most for the Windows + WSL workflow.
+          </p>
+          <div class="agent-list">
+            <div class="agent-item">
+              <div>
+                <strong>Claude Code</strong>
+                <span>Commands, edits, writes, plan review, AskUserQuestion, launch modes.</span>
+              </div>
+              <span class="agent-status">Full support</span>
+            </div>
+            <div class="agent-item">
+              <div>
+                <strong>Codex</strong>
+                <span>Approvals, hooks, launch panel, session management, history.</span>
+              </div>
+              <span class="agent-status">Full support</span>
+            </div>
+            <div class="agent-item">
+              <div>
+                <strong>Gemini CLI</strong>
+                <span>Shell approval normalization, writes, launch panel, activity feed.</span>
+              </div>
+              <span class="agent-status">Full support</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="workflow">
+        <div class="section-card">
+          <div class="section-kicker">How it works</div>
+          <h2>Hooks forward requests. Windows stays in control.</h2>
+          <div class="workflow">
+            <div class="workflow-step">
+              <b>1</b>
+              <strong>Install the bridge</strong>
+              <span>helm detects WSL, installs hooks, and verifies the approval service.</span>
+            </div>
+            <div class="workflow-step">
+              <b>2</b>
+              <strong>Launch an agent</strong>
+              <span>Pick a Linux project path and a launch mode. helm opens the terminal session for you.</span>
+            </div>
+            <div class="workflow-step">
+              <b>3</b>
+              <strong>Review the request</strong>
+              <span>Commands, edits, plans, and questions surface in the panel with human summaries and previews.</span>
+            </div>
+            <div class="workflow-step">
+              <b>4</b>
+              <strong>Approve or stop it</strong>
+              <span>Allow, deny, answer, or jump back to the managed terminal. History and activity stay visible.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="demo">
+        <div class="section-card">
+          <div class="section-kicker">Demo</div>
+          <h2>The entire loop fits in one minute.</h2>
+          <div class="demo-grid">
+            <div class="demo-stage">
+              <div class="demo-window primary">
+                <strong>Claude Code wants to change a file</strong>
+                <p>helm surfaces the request on Windows, shows a human summary, and keeps the risky command visible.</p>
+                <div class="code-sample" style="margin-top: 14px">Claude Code · Edit\n/home/wxinx/projects/marvis/src/app_state.rs\n\nAdd a safer fallback when the approval channel closes.</div>
+              </div>
+              <div class="demo-window secondary">
+                <h3 style="font-size: 18px">Approve</h3>
+                <p>Review the request, answer the question, or jump back to the managed terminal.</p>
+              </div>
+            </div>
+            <div class="demo-caption">
+              <div class="demo-step">
+                <strong>1. Connect once</strong>
+                <span>Detect WSL, install the bridge, and verify the local approval server.</span>
+              </div>
+              <div class="demo-step">
+                <strong>2. Launch in a Linux project</strong>
+                <span>Pick a WSL path and a launch mode. helm remembers recent projects for next time.</span>
+              </div>
+              <div class="demo-step">
+                <strong>3. Review, answer, or jump back</strong>
+                <span>Approvals, plans, and questions stay in the Windows UI while the terminal session stays in sync.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="pricing">
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="section-kicker">Pricing</div>
+            <div class="price">$19 <small>Founding Beta Access</small></div>
+            <p class="pricing-copy">
+              Seven-day full trial, then early users can activate Founding Beta Access.
+              The current build also carries a short grace period if verification goes
+              down after a successful activation.
+            </p>
+          </div>
+          <div class="pricing-card">
+            <div class="section-kicker">Why this is different</div>
+            <p class="pricing-copy">
+              helm is not a generic dashboard. It is a Windows-native approval layer
+              specifically for WSL terminal agents. That is the product, and that is
+              the moat.
+            </p>
+            <div class="hero-actions" style="margin-top: 20px">
+              <a class="btn btn-primary" href="README_CN.md">中文说明</a>
+              <a class="btn btn-secondary" href="RELEASE_CHECKLIST.md">Release checklist</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="download">
+        <div class="section-card">
+          <div class="section-kicker">Download</div>
+          <h2>Install with MSI. Keep ZIP as a portable fallback.</h2>
+          <div class="download-grid">
+            <div>
+              <p class="download-note">
+                The paid product should feel like installed software, not a loose executable. MSI is the primary delivery path. ZIP stays available for local testing and portable runs.
+              </p>
+              <div class="download-list">
+                <a class="download-item" href="release/helm-v0.1.0-windows-x64.msi">
+                  <div>
+                    <strong>Windows installer (.msi)</strong>
+                    <span>Recommended. Start menu entry, uninstall support, proper desktop install flow.</span>
+                  </div>
+                  <span class="pill">Primary</span>
+                </a>
+                <a class="download-item" href="release/helm-v0.1.0-windows-x64.zip">
+                  <div>
+                    <strong>Portable build (.zip)</strong>
+                    <span>For local testing, portable runs, and environments where installation is not desired.</span>
+                  </div>
+                  <span class="pill">Fallback</span>
+                </a>
+              </div>
+            </div>
+            <div class="pricing-card" style="padding: 24px">
+              <div class="section-kicker">What you get</div>
+              <div class="value-list">
+                <div class="value-item">
+                  <strong>Windows-native approval panel</strong>
+                  <span>Tray, minibar, launch panel, history, and activity feed stay on the desktop side.</span>
+                </div>
+                <div class="value-item">
+                  <strong>Three deep integrations</strong>
+                  <span>Claude Code, Codex, and Gemini CLI all route through the same Windows approval surface.</span>
+                </div>
+                <div class="value-item">
+                  <strong>Trial, beta, then paid access</strong>
+                  <span>Seven-day trial, Founding Beta Access for early buyers, then paid access on the formal release track.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="media">
+        <div class="section-card">
+          <div class="section-kicker">Media</div>
+          <h2>Release assets are ready to drop in.</h2>
+          <div class="media-grid">
+            <div class="media-frame">
+              <img src="site-assets/screenshots/_selftest.png" alt="helm self-test screenshot" />
+              <div class="media-caption">
+                The site now resolves local release assets from <code>dist/site-assets</code>. Replace this self-test capture with final product screenshots and GIFs without restructuring the page.
+              </div>
+            </div>
+            <div class="media-frame">
+              <img src="site-assets/mascots/sticker-sheet.png" alt="helm mascot sticker sheet" />
+              <div class="media-caption">
+                Mascot assets are already exportable and can be reused across the landing page, release notes, and screenshots.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <div class="faq-card">
+          <div class="section-kicker">FAQ</div>
+          <h2>What users usually ask first.</h2>
+          <div class="faq-list">
+            <div class="faq-item">
+              <strong>Does helm slow agents down?</strong>
+              <span>No. Safe read-only commands can auto-approve immediately. Only review-worthy actions wait for your decision.</span>
+            </div>
+            <div class="faq-item">
+              <strong>Does it work without WSL?</strong>
+              <span>No. helm is designed specifically for the Windows + WSL workflow.</span>
+            </div>
+            <div class="faq-item">
+              <strong>Can it jump back to any terminal tab?</strong>
+              <span>No. It jumps back to sessions launched and managed by helm. That constraint keeps the workflow reliable.</span>
+            </div>
+            <div class="faq-item">
+              <strong>What happens if helm is down?</strong>
+              <span>The hook bridge is fail-open. Your agent keeps moving instead of being bricked by the UI layer.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        helm is a desktop approval panel for Claude Code, Codex, and Gemini CLI on Windows + WSL.
+      </footer>
+    </div>
+  </body>
+</html>
