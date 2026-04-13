@@ -97,9 +97,25 @@
       .workflow-step strong, .value-item strong, .agent-item strong, .faq-item strong { display: block; margin: 12px 0 8px; font-size: 16px; }
       .price { font-size: 54px; font-weight: 800; letter-spacing: -0.04em; }
       .price small { color: var(--text-dim); font-size: 16px; font-weight: 600; }
+      .download-list { display: grid; gap: 12px; margin-top: 18px; }
+      .download-item {
+        display: flex; align-items: center; justify-content: space-between; gap: 16px;
+        padding: 16px 18px; border-radius: 18px; border: 1px solid rgba(154, 170, 196, 0.14); background: rgba(255, 255, 255, 0.03);
+      }
+      .download-item strong { display: block; margin-bottom: 6px; font-size: 15px; }
+      .pill {
+        padding: 7px 12px; border-radius: 999px; border: 1px solid rgba(154, 170, 196, 0.16);
+        color: var(--text-dim); font-size: 12px; font-weight: 700; white-space: nowrap;
+      }
+      .media-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+      .media-frame {
+        padding: 14px; border-radius: 22px; border: 1px solid rgba(154, 170, 196, 0.14); background: rgba(255, 255, 255, 0.03);
+      }
+      .media-frame img { display: block; width: 100%; border-radius: 16px; }
+      .media-caption { margin-top: 10px; color: var(--text-dim); font-size: 13px; line-height: 1.6; }
       .footer { padding: 18px 0 48px; color: var(--text-faint); font-size: 13px; }
       @media (max-width: 980px) {
-        .hero, .section-grid, .pricing-grid, .workflow { grid-template-columns: 1fr; }
+        .hero, .section-grid, .pricing-grid, .workflow, .media-grid { grid-template-columns: 1fr; }
       }
     </style>
   </head>
@@ -235,14 +251,53 @@
         </div>
       </section>
 
+      <section class="section" id="demo">
+        <div class="section-card">
+          <div class="section-kicker">演示</div>
+          <h2>整条闭环，一分钟内就能讲清楚。</h2>
+          <div class="section-grid">
+            <div class="media-frame">
+              <img src="site-assets/screenshots/approval-dialog.png" alt="helm 审批主卡截图" />
+              <div class="media-caption">
+                当 Claude Code 想改文件时，helm 会在 Windows 桌面上把请求接住，给出人话摘要，并保留原始上下文与风险信息。
+              </div>
+            </div>
+            <div class="value-list">
+              <div class="value-item">
+                <strong>1. 先接好审批桥</strong>
+                <span>检测 WSL、安装 hooks，并验证本地审批服务已经可用。</span>
+              </div>
+              <div class="value-item">
+                <strong>2. 在 Linux 项目里启动会话</strong>
+                <span>选择 WSL 路径和启动方式，helm 会记住最近项目，下次更快。</span>
+              </div>
+              <div class="value-item">
+                <strong>3. 在桌面上审批、回答或回跳</strong>
+                <span>审批、计划和提问都留在 Windows UI，终端会话继续保持同步。</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="section" id="pricing">
         <div class="pricing-grid">
           <div class="pricing-card">
             <div class="section-kicker">购买</div>
-            <div class="price">¥19 <small>Founding Beta Access</small></div>
+            <div class="price">¥19 <small>Founding Beta</small></div>
             <p class="pricing-copy">
-              当前发售的是 Windows + WSL 产品线的早期商业版本。包含 beta 期间的更新，以及正式版发布后的一个月免费正式使用期。
+              现在买入的是 Windows + WSL 产品线的早期正式商业版本：你会拿到持续 beta 更新、最多 2 台个人 Windows 设备使用权，以及 1.0 发布后的 1 个月免费正式访问期。
             </p>
+            <div class="value-list">
+              <div class="value-item">
+                <strong>现在的 beta 价</strong>
+                <span>当前是 ¥19，在你决定购买前可以先完整试用 7 天。</span>
+              </div>
+              <div class="value-item">
+                <strong>正式版计划价格</strong>
+                <span>计划在 1.0 后切到 ¥29/月 或 ¥228/年。</span>
+              </div>
+            </div>
             <div class="hero-actions">
               <a class="btn btn-primary" href="https://pay.novax.fun/checkout?plan=founding-beta&lang=zh-CN">立即购买</a>
             </div>
@@ -267,6 +322,50 @@
         </div>
       </section>
 
+      <section class="section" id="download">
+        <div class="section-card">
+          <div class="section-kicker">下载</div>
+          <h2>对外主入口是 MSI，ZIP 只做备用。</h2>
+          <div class="download-list">
+            <a class="download-item" href="https://github.com/artwalker/helm/releases/download/v0.1.0/helm-v0.1.0-windows-x64.msi">
+              <div>
+                <strong>Windows 安装包 (.msi)</strong>
+                <span>推荐给普通用户。安装、开始菜单和卸载路径都更符合预期。</span>
+              </div>
+              <span class="pill">主入口</span>
+            </a>
+            <a class="download-item" href="https://github.com/artwalker/helm/releases/download/v0.1.0/helm-v0.1.0-windows-x64.zip">
+              <div>
+                <strong>便携包 (.zip)</strong>
+                <span>用于本地测试、便携运行和安装失败时的备用方案。</span>
+              </div>
+              <span class="pill">备用</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="media">
+        <div class="section-card">
+          <div class="section-kicker">展示</div>
+          <h2>现在的对外素材已经是正式产品画面，不再是占位图。</h2>
+          <div class="media-grid">
+            <div class="media-frame">
+              <img src="site-assets/screenshots/minibar-expanded.png" alt="helm 胶囊展开截图" />
+              <div class="media-caption">
+                胶囊是最快的干预入口。它负责告诉你是谁在请求、风险高不高，以及现在要不要打断。
+              </div>
+            </div>
+            <div class="media-frame">
+              <img src="site-assets/gifs/minibar-flow.gif" alt="helm 审批流程 GIF" />
+              <div class="media-caption">
+                真正的价值不是“会弹窗”，而是在 Windows 上把审批、回跳和会话保持在一条流里。
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="section" id="faq">
         <div class="faq-card">
           <div class="section-kicker">FAQ</div>
@@ -283,6 +382,14 @@
             <div class="faq-item">
               <strong>能跳回任意终端标签页吗？</strong>
               <span>不能。只支持跳回由 helm 自己启动和管理的会话，这样才可靠。</span>
+            </div>
+            <div class="faq-item">
+              <strong>一个 beta 购买能用几台设备？</strong>
+              <span>当前每个 Founding Beta license 最多可用于 2 台个人 Windows 设备，而且这个限制已经由授权服务实际生效。</span>
+            </div>
+            <div class="faq-item">
+              <strong>beta 用户正式版会拿到什么？</strong>
+              <span>会从正式版发布日期开始，获得 1 个月免费正式访问期。之后再转入正式订阅方案。</span>
             </div>
             <div class="faq-item">
               <strong>如果 helm 挂了怎么办？</strong>

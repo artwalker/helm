@@ -10,7 +10,10 @@
     "multi-agent-queue.png"
   ],
   "gifs": [
-    "minibar-flow.gif"
+    "minibar-flow.gif",
+    "allow-flow.gif",
+    "deny-flow.gif",
+    "ask-flow.gif"
   ],
   "mascots": [
     "sticker-sheet.png",

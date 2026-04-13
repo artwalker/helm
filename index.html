@@ -821,12 +821,22 @@
         <div class="pricing-grid">
           <div class="pricing-card">
             <div class="section-kicker">Pricing</div>
-            <div class="price">$19 <small>Founding Beta Access</small></div>
+            <div class="price">CNY 19 <small>Founding beta</small></div>
             <p class="pricing-copy">
-              Seven-day full trial, then early users can activate Founding Beta Access.
-              The current build also carries a short grace period if verification goes
-              down after a successful activation.
+              Buy into the current Windows + WSL product now, keep receiving beta
+              updates, use it on up to 2 personal Windows devices, and get one free
+              production month when 1.0 ships.
             </p>
+            <div class="value-list" style="margin-top:20px">
+              <div class="value-item">
+                <strong>Beta today</strong>
+                <span>CNY 19 during beta, with a full 7-day trial before you decide to buy.</span>
+              </div>
+              <div class="value-item">
+                <strong>Planned launch price</strong>
+                <span>CNY 29/month or CNY 228/year after the formal production release.</span>
+              </div>
+            </div>
           </div>
           <div class="pricing-card">
             <div class="section-kicker">Why this is different</div>
@@ -853,14 +863,14 @@
                 The paid product should feel like installed software, not a loose executable. MSI is the primary delivery path. ZIP stays available for local testing and portable runs.
               </p>
               <div class="download-list">
-                <a class="download-item" href="release/helm-v0.1.0-windows-x64.msi">
+                <a class="download-item" href="https://github.com/artwalker/helm/releases/download/v0.1.0/helm-v0.1.0-windows-x64.msi">
                   <div>
                     <strong>Windows installer (.msi)</strong>
                     <span>Recommended. Start menu entry, uninstall support, proper desktop install flow.</span>
                   </div>
                   <span class="pill">Primary</span>
                 </a>
-                <a class="download-item" href="release/helm-v0.1.0-windows-x64.zip">
+                <a class="download-item" href="https://github.com/artwalker/helm/releases/download/v0.1.0/helm-v0.1.0-windows-x64.zip">
                   <div>
                     <strong>Portable build (.zip)</strong>
                     <span>For local testing, portable runs, and environments where installation is not desired.</span>
@@ -882,7 +892,7 @@
                 </div>
                 <div class="value-item">
                   <strong>Trial, beta, then paid access</strong>
-                  <span>Seven-day trial, Founding Beta Access for early buyers, then paid access on the formal release track.</span>
+                  <span>Start with a full 7-day trial, move into Founding Beta if you buy in early, then continue on the formal paid release track.</span>
                 </div>
               </div>
             </div>
@@ -896,15 +906,15 @@
           <h2>Release assets are ready to drop in.</h2>
           <div class="media-grid">
             <div class="media-frame">
-              <img src="site-assets/screenshots/_selftest.png" alt="helm self-test screenshot" />
+              <img src="site-assets/screenshots/minibar-expanded.png" alt="helm minibar expanded screenshot" />
               <div class="media-caption">
-                The site now resolves local release assets from <code>dist/site-assets</code>. Replace this self-test capture with final product screenshots and GIFs without restructuring the page.
+                The floating minibar is the fast path: it tells you which agent is asking, how risky it is, and when you need to intervene.
               </div>
             </div>
             <div class="media-frame">
-              <img src="site-assets/mascots/sticker-sheet.png" alt="helm mascot sticker sheet" />
+              <img src="site-assets/gifs/minibar-flow.gif" alt="helm minibar flow gif" />
               <div class="media-caption">
-                Mascot assets are already exportable and can be reused across the landing page, release notes, and screenshots.
+                The approval loop is short: request appears, you decide, the terminal keeps moving, and history stays visible on Windows.
               </div>
             </div>
           </div>
@@ -927,6 +937,14 @@
             <div class="faq-item">
               <strong>Can it jump back to any terminal tab?</strong>
               <span>No. It jumps back to sessions launched and managed by helm. That constraint keeps the workflow reliable.</span>
+            </div>
+            <div class="faq-item">
+              <strong>How many devices does one beta purchase cover?</strong>
+              <span>Each founding beta license currently covers up to 2 personal Windows devices, and that limit is enforced by the license service.</span>
+            </div>
+            <div class="faq-item">
+              <strong>What do beta buyers get when 1.0 launches?</strong>
+              <span>One free production month starting on the formal release date. After that, the plan moves to the normal subscription tier available at launch.</span>
             </div>
             <div class="faq-item">
               <strong>What happens if helm is down?</strong>
