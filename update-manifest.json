@@ -1,19 +1,19 @@
 {
   "version": "0.1.1",
-  "generated_at": "2026-04-13T07:17:56.9590300+00:00",
-  "download_url": "https://pay.novax.fun/downloads/helm-v0.1.1-windows-x64.msi",
+  "generated_at": "2026-04-13T09:29:37.3450592+00:00",
+  "download_url": "https://github.com/artwalker/helm/releases/download/v0.1.1/helm-v0.1.1-windows-x64.msi",
   "notes_url": "https://helm.novax.fun/release-notes.html",
   "assets": [
     {
       "kind": "msi",
       "file": "helm-v0.1.1-windows-x64.msi",
-      "url": "https://pay.novax.fun/downloads/helm-v0.1.1-windows-x64.msi",
+      "url": "https://github.com/artwalker/helm/releases/download/v0.1.1/helm-v0.1.1-windows-x64.msi",
       "sha256": "970e4473636e4443ae6839ed2608344607e8c620064fde86407056c60d92fa5c"
     },
     {
       "kind": "zip",
       "file": "helm-v0.1.1-windows-x64.zip",
-      "url": "https://pay.novax.fun/downloads/helm-v0.1.1-windows-x64.zip",
+      "url": "https://github.com/artwalker/helm/releases/download/v0.1.1/helm-v0.1.1-windows-x64.zip",
       "sha256": "5d4c24d5eeec5cd0de7a5752a1cf99c26d6c07c4f355d075ed420e17e000cf55"
     }
   ]

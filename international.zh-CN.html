@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="site-assets/favicon.svg" />
+    <title>helm — 国际加密货币支付</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #09101c;
+        --panel: rgba(17, 24, 39, 0.84);
+        --border: rgba(154, 170, 196, 0.18);
+        --text: #eef3ff;
+        --text-dim: #aeb9ce;
+        --accent: #73b1ff;
+        --accent-2: #66d3cc;
+        --shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
+        --radius: 28px;
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Inter, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(115, 177, 255, 0.16), transparent 26%),
+          linear-gradient(180deg, #0c1524 0%, #09101c 54%, #070c15 100%);
+      }
+      a { color: inherit; text-decoration: none; }
+      .shell { width: min(880px, calc(100vw - 48px)); margin: 0 auto; padding: 32px 0 56px; }
+      .card {
+        border: 1px solid var(--border);
+        background: var(--panel);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(14px);
+        padding: 32px;
+      }
+      .eyebrow {
+        color: var(--accent-2);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      h1 {
+        margin: 14px 0 16px;
+        font-size: clamp(36px, 7vw, 58px);
+        line-height: 0.96;
+        letter-spacing: -0.04em;
+      }
+      p, li {
+        color: var(--text-dim);
+        font-size: 17px;
+        line-height: 1.75;
+      }
+      ul { margin: 18px 0 0; padding-left: 20px; }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 26px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 18px;
+        border-radius: 16px;
+        border: 1px solid rgba(154, 170, 196, 0.18);
+        font-size: 15px;
+        font-weight: 700;
+      }
+      .btn-primary { color: #07111d; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
+      .btn-secondary { color: var(--text); background: rgba(255, 255, 255, 0.04); }
+      .note {
+        margin-top: 24px;
+        padding: 14px 16px;
+        border-radius: 18px;
+        border: 1px solid rgba(154, 170, 196, 0.14);
+        background: rgba(255, 255, 255, 0.03);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <div class="card">
+        <div class="eyebrow">国际支付</div>
+        <h1>国际加密货币支付会作为下一条独立路径上线。</h1>
+        <p>
+          当前已经上线的是中国大陆 beta 购买链路。国际支付不会继续复用现在的 CNY
+          结账，而是会单独做成面向海外用户的 crypto checkout。
+        </p>
+        <ul>
+          <li>当前产品卖的是 <strong>helm Beta Access</strong>，面向 Windows + WSL 工作流。</li>
+          <li>当前测试价仍按 <strong>人民币 19 元等值</strong> 设计，最多支持 2 台个人 Windows 设备。</li>
+          <li>正式版发布后，beta 用户会获得 <strong>1 个月正式版赠送使用期</strong>。</li>
+          <li>国际支付会作为单独的加密货币结账入口上线，而不是给当前大陆链路换个名字。</li>
+        </ul>
+        <div class="actions">
+          <a class="btn btn-secondary" href="zh-CN.html">返回官网</a>
+          <a class="btn btn-primary" href="https://github.com/artwalker/helm/issues/new/choose">提交国际支付需求</a>
+        </div>
+        <div class="note">
+          如果你现在就需要使用，而且可以使用中国大陆支付链路，仍然可以先从官网购买当前的 Beta Access。
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="site-assets/favicon.svg" />
+    <title>helm — International crypto checkout</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #09101c;
+        --panel: rgba(17, 24, 39, 0.84);
+        --border: rgba(154, 170, 196, 0.18);
+        --text: #eef3ff;
+        --text-dim: #aeb9ce;
+        --accent: #73b1ff;
+        --accent-2: #66d3cc;
+        --shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
+        --radius: 28px;
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Inter, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(115, 177, 255, 0.16), transparent 26%),
+          linear-gradient(180deg, #0c1524 0%, #09101c 54%, #070c15 100%);
+      }
+      a { color: inherit; text-decoration: none; }
+      .shell { width: min(880px, calc(100vw - 48px)); margin: 0 auto; padding: 32px 0 56px; }
+      .card {
+        border: 1px solid var(--border);
+        background: var(--panel);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(14px);
+        padding: 32px;
+      }
+      .eyebrow {
+        color: var(--accent-2);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      h1 {
+        margin: 14px 0 16px;
+        font-size: clamp(36px, 7vw, 58px);
+        line-height: 0.96;
+        letter-spacing: -0.04em;
+      }
+      p, li {
+        color: var(--text-dim);
+        font-size: 17px;
+        line-height: 1.75;
+      }
+      ul { margin: 18px 0 0; padding-left: 20px; }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 26px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 18px;
+        border-radius: 16px;
+        border: 1px solid rgba(154, 170, 196, 0.18);
+        font-size: 15px;
+        font-weight: 700;
+      }
+      .btn-primary { color: #07111d; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
+      .btn-secondary { color: var(--text); background: rgba(255, 255, 255, 0.04); }
+      .note {
+        margin-top: 24px;
+        padding: 14px 16px;
+        border-radius: 18px;
+        border: 1px solid rgba(154, 170, 196, 0.14);
+        background: rgba(255, 255, 255, 0.03);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <div class="card">
+        <div class="eyebrow">International checkout</div>
+        <h1>Crypto checkout is the next payment path.</h1>
+        <p>
+          Mainland China beta checkout is live today. International checkout is
+          being split into its own crypto flow instead of routing buyers through
+          the current CNY payment path.
+        </p>
+        <ul>
+          <li>The current product is <strong>helm Beta Access</strong> for Windows + WSL.</li>
+          <li>The launch offer remains <strong>CNY 19 equivalent</strong> and covers up to 2 personal Windows devices.</li>
+          <li>When the formal release ships, beta buyers receive <strong>1 free month</strong> of formal access.</li>
+          <li>Crypto checkout is being prepared as a separate international path, not a relabel of the current mainland flow.</li>
+        </ul>
+        <div class="actions">
+          <a class="btn btn-secondary" href="index.html">Back to site</a>
+          <a class="btn btn-primary" href="https://github.com/artwalker/helm/issues/new/choose">Request crypto checkout</a>
+        </div>
+        <div class="note">
+          If you need access right now and you're able to use the mainland China checkout,
+          you can still purchase the current beta offer from the main site.
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
