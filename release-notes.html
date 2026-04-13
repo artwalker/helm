@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>helm v0.1.1 Release Notes</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0a0f1a;
+        --panel: rgba(17, 24, 39, 0.92);
+        --panel-border: rgba(102, 153, 255, 0.18);
+        --text: #f3f6ff;
+        --muted: #aeb8d3;
+        --accent-a: #7aa8ff;
+        --accent-b: #5ed4cf;
+        --line: rgba(255, 255, 255, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+        background:
+          radial-gradient(circle at top, rgba(90, 126, 255, 0.18), transparent 38%),
+          linear-gradient(180deg, #0d1422 0%, var(--bg) 100%);
+        color: var(--text);
+      }
+
+      .shell {
+        width: min(920px, calc(100vw - 32px));
+        margin: 40px auto;
+        padding: 32px;
+        border-radius: 28px;
+        background: var(--panel);
+        border: 1px solid var(--panel-border);
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+      }
+
+      .eyebrow {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: #c9d6ff;
+      }
+
+      h1 {
+        margin: 12px 0 8px;
+        font-size: clamp(32px, 5vw, 54px);
+        line-height: 1.05;
+      }
+
+      .lede {
+        margin: 0 0 28px;
+        max-width: 720px;
+        font-size: 18px;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+
+      .section {
+        margin-top: 28px;
+        padding-top: 28px;
+        border-top: 1px solid var(--line);
+      }
+
+      h2 {
+        margin: 0 0 16px;
+        font-size: 24px;
+      }
+
+      p,
+      li {
+        font-size: 17px;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 22px;
+      }
+
+      .grid {
+        display: grid;
+        gap: 20px;
+      }
+
+      @media (min-width: 760px) {
+        .grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .card {
+        padding: 20px 22px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+      }
+
+      .card h3 {
+        margin: 0 0 10px;
+        font-size: 18px;
+      }
+
+      .footer {
+        margin-top: 30px;
+        font-size: 15px;
+        color: #91a0c5;
+      }
+
+      a {
+        color: #cfe0ff;
+      }
+
+      .accent {
+        background: linear-gradient(135deg, var(--accent-a), var(--accent-b));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <div class="eyebrow">helm release</div>
+      <h1>v0.1.1 <span class="accent">Polish Update</span></h1>
+      <p class="lede">
+        This release tightens the public product surface around updates, activation, and launch
+        flow while keeping the core Windows + WSL approval experience intact.
+      </p>
+
+      <section class="grid">
+        <article class="card">
+          <h3>English highlights</h3>
+          <ul>
+            <li>Approval flow for Claude Code, Codex, and Gemini CLI</li>
+            <li>GUI handling for <code>AskUserQuestion</code></li>
+            <li>Smarter low-risk auto-approve and danger-priority queueing</li>
+            <li>Clearer purchase, license activation, and update messaging</li>
+            <li>Faster first-switch behavior for Home, History, and Settings</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>中文重点</h3>
+          <ul>
+            <li>支持 Claude Code、Codex、Gemini CLI 的审批链路</li>
+            <li>支持 <code>AskUserQuestion</code> 的 GUI 回答</li>
+            <li>低风险读取可自动放行，危险请求优先排队</li>
+            <li>购买、激活、更新相关文案统一收口为产品表达</li>
+            <li>主页、历史、设置的首次切换冷路径进一步提速</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="section grid">
+        <article class="card">
+          <h3>System requirements</h3>
+          <ul>
+            <li>Windows 10 or 11</li>
+            <li>WSL2</li>
+            <li>WebView2 runtime</li>
+            <li>Claude Code, Codex, or Gemini CLI installed inside Linux</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>系统要求</h3>
+          <ul>
+            <li>Windows 10 / 11</li>
+            <li>WSL2</li>
+            <li>WebView2 runtime</li>
+            <li>Linux 环境内已安装 Claude Code、Codex 或 Gemini CLI</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="section">
+        <h2>Known gaps</h2>
+        <ul>
+          <li>Gemini CLI still needs broader real-world validation.</li>
+          <li>Some final UI and motion polish is still ongoing.</li>
+          <li>Long-running Windows session validation still benefits from more field time.</li>
+        </ul>
+      </section>
+
+      <p class="footer">
+        Full product site: <a href="https://helm.novax.fun/">helm.novax.fun</a>
+      </p>
+    </main>
+  </body>
+</html>

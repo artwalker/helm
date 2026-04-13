@@ -5,6 +5,7 @@ Contents:
 - zh-CN.html
 - update-manifest.json
 - RELEASE_NOTES.md
+- release-notes.html
 - site-assets/
 
 Build steps:

@@ -1,8 +1,8 @@
 {
   "version": "0.1.1",
-  "generated_at": "2026-04-13T07:04:37.2355834+00:00",
+  "generated_at": "2026-04-13T07:17:56.9590300+00:00",
   "download_url": "https://pay.novax.fun/downloads/helm-v0.1.1-windows-x64.msi",
-  "notes_url": "https://helm.novax.fun/RELEASE_NOTES.md",
+  "notes_url": "https://helm.novax.fun/release-notes.html",
   "assets": [
     {
       "kind": "msi",
