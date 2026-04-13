@@ -1,0 +1,20 @@
+{
+  "version": "0.1.0",
+  "generated_at": "2026-04-13T04:38:30.6445107+00:00",
+  "download_url": "https://github.com/artwalker/helm/releases/download/v0.1.0/helm-v0.1.0-windows-x64.msi",
+  "notes_url": "https://github.com/artwalker/helm/releases/tag/v0.1.0",
+  "assets": [
+    {
+      "kind": "msi",
+      "file": "helm-v0.1.0-windows-x64.msi",
+      "url": "https://github.com/artwalker/helm/releases/download/v0.1.0/helm-v0.1.0-windows-x64.msi",
+      "sha256": "a52f0493896fe1a7739d5f4fc57c6ccdfd6a9c7d27df13a29d74f3a16bff7e07"
+    },
+    {
+      "kind": "zip",
+      "file": "helm-v0.1.0-windows-x64.zip",
+      "url": "https://github.com/artwalker/helm/releases/download/v0.1.0/helm-v0.1.0-windows-x64.zip",
+      "sha256": "2e7823f297a789f790f7673c0081d84c791253eb0588aa315ec5456deda2a8dc"
+    }
+  ]
+}

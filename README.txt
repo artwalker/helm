@@ -3,6 +3,8 @@ GitHub Pages publish directory for helm
 Contents:
 - index.html
 - zh-CN.html
+- update-manifest.json
+- RELEASE_NOTES.md
 - site-assets/
 
 Build steps:

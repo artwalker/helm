@@ -164,7 +164,7 @@
             命令、改文件、计划和提问都能在 Windows 面板里确认，不再反复切回终端输入 y/n。
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="https://pay.novax.fun/checkout?plan=founding-beta&lang=zh-CN">开始 7 天试用</a>
+            <a class="btn btn-primary" href="https://pay.novax.fun/checkout?plan=founding-beta&lang=zh-CN">获取 helm</a>
             <a class="btn btn-secondary" href="https://github.com/artwalker/helm/issues/new/choose">提交反馈</a>
           </div>
           <div class="hero-notes">
@@ -189,7 +189,7 @@
             <div class="section-kicker">为什么是 helm</div>
             <h2>专门为 Windows 终端工作流做的产品。</h2>
             <p class="section-copy">
-              这不是把 macOS 的思路硬搬过来。helm 针对的是 Windows + WSL 的真实问题：审批、会话、tray、minibar、回跳和启动链路都统一在桌面侧处理。
+              helm 从一开始就是围绕 Windows + WSL 工作流设计的：审批、会话、tray、minibar、回跳和启动链路都统一在桌面侧处理。
             </p>
           </div>
           <div class="section-card">
@@ -303,27 +303,26 @@
         <div class="pricing-grid">
           <div class="pricing-card">
             <div class="section-kicker">购买</div>
-            <div class="price">¥19 <small>Founding Beta 使用资格</small></div>
+            <div class="price">¥19 <small>当前价格</small></div>
             <p class="pricing-copy">
-              先完整试用 7 天。如果 helm 适合你的 Windows + WSL 工作流，再升级到 Founding Beta。
-              你会获得持续 beta 更新、最多 2 台个人 Windows 设备使用资格，以及 1.0 订阅开始时赠送的 1 个月访问期。
+              一次购买最多可用于 2 台个人 Windows 设备，让你在自己的 Windows 环境里保持同一套审批体验。
             </p>
             <div class="value-list">
               <div class="value-item">
-                <strong>先试用，再决定</strong>
-                <span>先用完整产品 7 天，再决定是否购买。</span>
+                <strong>适合自己的 Windows 环境</strong>
+                <span>装好之后，你可以在自己的 Windows 设备上持续使用同一套审批流程。</span>
               </div>
               <div class="value-item">
-                <strong>1.0 后的订阅价格</strong>
-                <span>计划在 1.0 后切到 ¥29/月 或 ¥228/年。</span>
+                <strong>2 台个人设备</strong>
+                <span>一份购买最多可用于 2 台个人 Windows 设备。</span>
               </div>
             </div>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="https://pay.novax.fun/checkout?plan=founding-beta&lang=zh-CN">获取 Founding Beta</a>
+              <a class="btn btn-primary" href="https://pay.novax.fun/checkout?plan=founding-beta&lang=zh-CN">获取 helm</a>
             </div>
           </div>
           <div class="pricing-card">
-            <div class="section-kicker">你买到的是什么</div>
+            <div class="section-kicker">为什么值得买</div>
             <div class="value-list">
               <div class="value-item">
                 <strong>Windows 原生审批面</strong>
@@ -331,11 +330,11 @@
               </div>
               <div class="value-item">
                 <strong>三个核心工具深度接入</strong>
-                <span>Claude Code、Codex 和 Gemini CLI 都走同一套审批面，不是拼起来的浅层兼容。</span>
+                <span>Claude Code、Codex 和 Gemini CLI 都走同一套审批面，整体体验保持一致。</span>
               </div>
               <div class="value-item">
-                <strong>持续更新的产品线</strong>
-                <span>你买到的是会继续迭代的 Windows + WSL 产品线，不是一次性的演示版本。</span>
+                <strong>装好之后也容易保持最新</strong>
+                <span>helm 可以在应用里发现新安装包、下载 MSI，并把安装交回 Windows 处理。</span>
               </div>
             </div>
           </div>
@@ -355,9 +354,6 @@
               <span class="pill">推荐</span>
             </a>
           </div>
-          <p class="media-caption" style="margin-top: 14px">
-            如果你确实需要便携 ZIP 做测试、恢复或免安装运行，可以在发布页找到，但它不是对外的主安装路径。
-          </p>
         </div>
       </section>
 
@@ -400,20 +396,16 @@
               <span>不能。只支持跳回由 helm 自己启动和管理的会话，这样才可靠。</span>
             </div>
             <div class="faq-item">
-              <strong>一个 beta 购买能用几台设备？</strong>
-              <span>每个 Founding Beta license 最多可用于 2 台个人 Windows 设备，而且这个限制已经由授权服务实际生效。</span>
+              <strong>一份购买包含几台设备？</strong>
+              <span>一份购买最多可用于 2 台个人 Windows 设备。</span>
             </div>
             <div class="faq-item">
-              <strong>为什么发布页里还有 ZIP？</strong>
-              <span>产品对外主入口是 MSI。ZIP 只保留给测试、恢复和便携场景，不是主安装方式。</span>
-            </div>
-            <div class="faq-item">
-              <strong>beta 用户正式版会拿到什么？</strong>
-              <span>会从正式版发布日期开始，获得 1 个月免费访问期。之后再转入正式订阅。</span>
+              <strong>更新怎么工作？</strong>
+                <span>helm 可以检查更新地址、下载新版 MSI，并把安装过程交回 Windows。</span>
             </div>
             <div class="faq-item">
               <strong>如果 helm 挂了怎么办？</strong>
-              <span>bridge 是 fail-open，agent 不会因为 UI 层出问题而被卡死。</span>
+              <span>agent 不会因为桌面层暂时不可用而被卡住。</span>
             </div>
           </div>
         </div>
