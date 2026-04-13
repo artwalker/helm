@@ -323,19 +323,19 @@
             </div>
           </div>
           <div class="pricing-card">
-            <div class="section-kicker">为什么值得买</div>
+            <div class="section-kicker">你买到的是什么</div>
             <div class="value-list">
               <div class="value-item">
-                <strong>不是一次性噱头</strong>
-                <span>你买到的是持续迭代的 Windows + WSL 审批产品线，而不是一次性的演示版本。</span>
+                <strong>Windows 原生审批面</strong>
+                <span>它把审批、历史、活动流和启动面板留在桌面侧，而不是逼你反复切回终端。</span>
               </div>
               <div class="value-item">
-                <strong>聚焦三个核心工具</strong>
-                <span>当前只深做 Claude Code、Codex 和 Gemini CLI，不用表面广度换来体验妥协。</span>
+                <strong>三个核心工具深度接入</strong>
+                <span>Claude Code、Codex 和 Gemini CLI 都走同一套审批面，不是拼起来的浅层兼容。</span>
               </div>
               <div class="value-item">
-                <strong>重点是可靠体验</strong>
-                <span>它卖的是可靠的审批、会话和桌面控制体验，而不是“支持很多平台”的口号。</span>
+                <strong>持续更新的产品线</strong>
+                <span>你买到的是会继续迭代的 Windows + WSL 产品线，不是一次性的演示版本。</span>
               </div>
             </div>
           </div>
@@ -345,23 +345,19 @@
       <section class="section" id="download">
         <div class="section-card">
           <div class="section-kicker">下载</div>
-          <h2>对外主入口是 MSI，ZIP 只做备用。</h2>
+          <h2>像正常的 Windows 软件一样安装 helm。</h2>
           <div class="download-list">
             <a class="download-item" href="https://github.com/artwalker/helm/releases/download/v0.1.0/helm-v0.1.0-windows-x64.msi">
               <div>
                 <strong>Windows 安装包 (.msi)</strong>
-                <span>推荐给普通用户。安装、开始菜单和卸载路径都更符合预期。</span>
+                <span>推荐。包含正常安装、开始菜单入口和卸载支持。</span>
               </div>
-              <span class="pill">主入口</span>
-            </a>
-            <a class="download-item" href="https://github.com/artwalker/helm/releases/download/v0.1.0/helm-v0.1.0-windows-x64.zip">
-              <div>
-                <strong>便携包 (.zip)</strong>
-                <span>用于本地测试、便携运行和安装失败时的备用方案。</span>
-              </div>
-              <span class="pill">备用</span>
+              <span class="pill">推荐</span>
             </a>
           </div>
+          <p class="media-caption" style="margin-top: 14px">
+            如果你确实需要便携 ZIP 做测试、恢复或免安装运行，可以在发布页找到，但它不是对外的主安装路径。
+          </p>
         </div>
       </section>
 
@@ -406,6 +402,10 @@
             <div class="faq-item">
               <strong>一个 beta 购买能用几台设备？</strong>
               <span>每个 Founding Beta license 最多可用于 2 台个人 Windows 设备，而且这个限制已经由授权服务实际生效。</span>
+            </div>
+            <div class="faq-item">
+              <strong>为什么发布页里还有 ZIP？</strong>
+              <span>产品对外主入口是 MSI。ZIP 只保留给测试、恢复和便携场景，不是主安装方式。</span>
             </div>
             <div class="faq-item">
               <strong>beta 用户正式版会拿到什么？</strong>
