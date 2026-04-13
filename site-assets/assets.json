@@ -20,5 +20,8 @@
     "pilot-idle.png",
     "spark-idle.png",
     "prism-idle.png"
+  ],
+  "root_assets": [
+    "favicon.svg"
   ]
 }

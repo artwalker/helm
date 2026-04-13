@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="helm-g" x1="10" y1="8" x2="54" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7AA2F7" />
+      <stop offset="1" stop-color="#5FD1C4" />
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="18" fill="url(#helm-g)" />
+  <path
+    d="M21 35.5C21 28.6 26.6 23 33.5 23H41C45.4 23 49 26.6 49 31C49 35.4 45.4 39 41 39H30.5"
+    stroke="#F7FAFF"
+    stroke-width="6"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M30.5 39L38.5 47"
+    stroke="#5FD1C4"
+    stroke-width="6"
+    stroke-linecap="round"
+  />
+</svg>
