@@ -25,11 +25,11 @@ System requirements:
 - WebView2 runtime
 - Claude Code, Codex, or Gemini CLI installed inside your Linux environment
 
-Known gaps in this release:
+Release focus in this update:
 
-- Gemini CLI still needs broader real-world validation
-- Some final UI and motion polish is still in progress
-- A wider real-world pass on long-running Windows sessions is still useful
+- Approval reliability, launch flow, and product-facing clarity
+- Signed Windows MSI as the default download path
+- Stable public endpoints for activation, update discovery, and release notes
 
 ## 中文
 
@@ -56,8 +56,8 @@ Known gaps in this release:
 - WebView2 runtime
 - 在 Linux 环境中安装 Claude Code、Codex 或 Gemini CLI
 
-当前已知空缺：
+本次更新的重点：
 
-- Gemini CLI 还需要更广泛的真实环境验证
-- UI 和动效仍有最后一轮 polish 在进行中
-- 长时间 Windows 实机会话还值得继续扩大样本验证
+- 审批稳定性、启动链路与产品表达的统一
+- 以已签名的 Windows MSI 作为默认下载路径
+- 激活、更新检查、版本说明都落到稳定的公开地址
